@@ -3,13 +3,11 @@
     <NuxtRouteAnnouncer />
     <NuxtWelcome />
     -->
-  <div>
-    <UContainer>
-      <NuxtPage />
-    </UContainer>
+  <UContainer>
+    <NuxtPage />
+  </UContainer>
 
-    <UModals />
-  </div>
+  <UModals />
 </template>
 
 <script lang="ts" setup>

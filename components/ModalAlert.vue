@@ -23,7 +23,8 @@ defineProps({
         default: ''
     },
     option: {
-        type: Object as PropType<AlertOption>,
+        type: Object,
+        default: {}
     }
 })
 </script>

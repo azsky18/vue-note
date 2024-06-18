@@ -1,35 +1,34 @@
 import { ModalAlert } from "#components";
 
+interface AlertOption {
+  header?: boolean;
+  headerText?: string;
+  closeButtonText?: string;
+  onClose?: (modal: any) => void;
+}
+
 export default defineNuxtPlugin((nuxtApp) => {
   const modal = useModal();
 
-  // const defaultAlertOption = {
-  //   header: true,
-  //   headerText: "Alert",
-  //   closeButtonText: "Confirm",
-  //   callback: (modal: any) => {
-  //     modal.close();
-  //   },
-  // };
-
   return {
     provide: {
-      alert: (message: string, option: AlertOption) => {
+      alert: (message: string, option: AlertOption = {}) => {
         const opt = Object.assign(
-          {},
           {
             header: true,
             headerText: "Alert",
             closeButtonText: "Confirm",
+          },
+          option,
+          {
             callback: () => {
-              if (option?.callback) {
-                option.callback(modal);
+              if (option?.onClose) {
+                option.onClose(modal);
               } else {
                 modal.close();
               }
             },
-          },
-          option
+          }
         );
 
         modal.open(ModalAlert, {

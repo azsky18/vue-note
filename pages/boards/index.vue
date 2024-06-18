@@ -25,15 +25,6 @@ const { data: boards } = await useAsyncData(
 
 
 const { $alert } = useNuxtApp()
-
-$alert('option text', {
-  headerText: 'false',
-  callback: (modal) => {
-    console.log('close');
-    // default 설정시 callback은 어떻게 처리하면 말끔한가?
-    modal.close();
-  }
-})
 </script>
 
 <style></style>
